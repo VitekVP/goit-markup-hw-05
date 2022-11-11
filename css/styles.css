@@ -27,6 +27,9 @@
   --client-link-color: #afb1b8;
   /* відступ у сітках */
   --indent: 30px;
+  /* властивості переходів */
+  --anim-time: 250ms;
+  --anim-ft: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* body */
@@ -111,6 +114,8 @@ img {
 
 /* кнопки навігації */
 .site-nav .link {
+  position: relative;
+
   font-weight: 500;
   font-size: 14px;
   line-height: calc(16 / 14);
@@ -118,6 +123,10 @@ img {
   text-decoration: none;
 
   color: var(--title-text-color);
+
+  transition-property: color;
+  transition-duration: var(--anim-time);
+  transition-timing-function: var(--anim-ft);
 }
 
 .site-nav .link:hover,
@@ -127,6 +136,19 @@ img {
 
 .link.current {
   color: var(--logo-web);
+}
+
+.link.current::after {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+
+  content: '';
+  width: 100%;
+  height: 4px;
+
+  border-radius: 2px;
+  background-color: var(--logo-web);
 }
 
 .header-nav {
@@ -144,8 +166,11 @@ img {
   line-height: calc(16 / 14);
   letter-spacing: 0.02em;
   text-decoration: none;
-
   color: var(--primary-text-color);
+
+  transition-property: color;
+  transition-duration: var(--anim-time);
+  transition-timing-function: var(--anim-ft);
 }
 
 .icon-contacts {
@@ -177,7 +202,6 @@ img {
 
 .header-link,
 .link-contacts {
-  /* display: block; */
   padding-top: 32px;
   padding-bottom: 31px;
 }
@@ -221,13 +245,16 @@ img {
   font-size: 16px;
   line-height: calc(30 / 16);
   letter-spacing: 0.06em;
-
-  background-color: var(--logo-web);
   color: var(--basic-white-color);
 
+  background-color: var(--logo-web);
   box-shadow: 0px 4px 4px #00000026;
   border-radius: 4px;
   cursor: pointer;
+
+  transition-property: background-color;
+  transition-duration: var(--anim-time);
+  transition-timing-function: var(--anim-ft);
 }
 
 .hero-button:hover,
@@ -308,7 +335,31 @@ img {
 }
 
 .img-item {
+  position: relative;
+
   flex-basis: calc((100%- (var(--items)-1) * var(--indent))) / var(--items);
+}
+
+.box-overlay {
+  position: absolute;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+
+  background: #2f303acc;
+}
+
+.box-text {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: calc(16 / 14);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--basic-white-color);
 }
 
 /* Команда */
@@ -380,8 +431,11 @@ img {
   color: #afb1b8;
 
   background-color: var(--basic-white-color);
-
   border-radius: 50%;
+
+  transition-property: color, background-color;
+  transition-duration: var(--anim-time);
+  transition-timing-function: var(--anim-ft);
 }
 
 .social-icon {
@@ -419,6 +473,10 @@ img {
 
   border: 1px solid var(--client-link-color);
   border-radius: 4px;
+
+  transition-property: color, border;
+  transition-duration: var(--anim-time);
+  transition-timing-function: var(--anim-ft);
 }
 
 .client-icon {
@@ -450,6 +508,10 @@ img {
   font-style: normal;
 
   color: var(--basic-white-color);
+
+  transition-property: color;
+  transition-duration: var(--anim-time);
+  transition-timing-function: var(--anim-ft);
 }
 
 .link-addresse-footer:hover,
@@ -462,6 +524,10 @@ img {
   font-style: normal;
 
   color: var(--contacts-footer-colors);
+
+  transition-property: color;
+  transition-duration: var(--anim-time);
+  transition-timing-function: var(--anim-ft);
 }
 
 address {
@@ -502,28 +568,32 @@ address {
 /* Портфоліо */
 
 .filter-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 38px;
   padding: 0 22px;
 
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: calc(26 / 16);
-  text-align: center;
   letter-spacing: 0.03em;
-
   color: var(--title-text-color);
 
   background-color: var(--secondary-bgc);
-
   border-radius: 4px;
+  cursor: pointer;
+
+  transition-property: color, background-color, box-shadow;
+  transition-duration: var(--anim-time);
+  transition-timing-function: var(--anim-ft);
 }
 
 .filter {
   display: flex;
   gap: 8px;
   justify-content: center;
+  align-items: center;
   margin-bottom: 50px;
 }
 
@@ -534,7 +604,6 @@ address {
   background-color: var(--logo-web);
 
   box-shadow: 0px 3px 1px #0000001a, 0px 1px 2px #00000014, 0px 2px 2px #0000001f;
-  cursor: pointer;
 }
 
 .title-portfolio {
@@ -574,6 +643,10 @@ address {
 .card-project {
   max-height: 404px;
   flex-basis: calc((100%- (var(--items)-1) * var(--indent))) / var(--items);
+
+  transition-property: box-shadow;
+  transition-duration: var(--anim-time);
+  transition-timing-function: var(--anim-ft);
 }
 
 .card-project:hover,
