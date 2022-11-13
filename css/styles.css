@@ -653,3 +653,111 @@ address {
 .card-project:focus {
   box-shadow: 0px 1px 1px #0000001f, 0px 4px 4px #0000000f, 1px 4px 6px #00000029;
 }
+
+.project-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 24px;
+  width: 100%;
+  height: 100%;
+
+  background: #2196f3e6;
+
+  transform: translateY(100%);
+  transition-property: transform;
+  transition-duration: var(--anim-time);
+  transition-timing-function: var(--anim-ft);
+
+  user-select: none;
+}
+
+.text-project-overlay {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: calc(28 / 18);
+  letter-spacing: 0.03em;
+  color: var(--basic-white-color);
+}
+
+.card-project:hover .project-overlay {
+  transform: translateY(0);
+}
+
+/* Модальне вікно */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: #00000033;
+
+  transition-property: opacity, visibility;
+  transition-duration: var(--anim-time);
+  transition-timing-function: var(--anim-ft);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  width: 528px;
+  height: 581px;
+
+  background: var(--basic-white-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  transition-property: opasity, transform;
+  transition-duration: var(--anim-time);
+  transition-timing-function: var(--anim-ft);
+}
+
+.backdrop.is-hidden .modal {
+  opacity: 0;
+  transform: translate(-50%, 75%) scale(0.2);
+}
+
+.modal-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  padding: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #0000001a;
+
+  border-radius: 50%;
+  background: var(--basic-white-color);
+  border: 1px solid #0000001a;
+  cursor: pointer;
+}
+
+.modal-btn {
+  fill: currentColor;
+}
